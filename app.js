@@ -8,15 +8,15 @@ const shopRoutes = require('./routes/shop');
 
 const app = express();
 
-app.engine(
-  'hbs',
-  expressHbs({
-    extname: 'hbs',
-    defaultLayout: 'main-layout',
-    layoutsDir: '',
-  })
-);
-app.set('view engine', 'hbs');
+// app.engine(
+//   'hbs',
+//   expressHbs({
+//     extname: 'hbs',
+//     defaultLayout: 'main-layout',
+//     layoutsDir: '',
+//   })
+// );
+app.set('view engine', 'ejs');
 app.set('views', 'views');
 
 app.use(bodyParser.urlencoded({ extended: true }));
