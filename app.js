@@ -12,7 +12,7 @@ app.engine(
   'hbs',
   expressHbs({
     extname: 'hbs',
-    defaultLayout: '',
+    defaultLayout: 'main-layout',
     layoutsDir: '',
   })
 );
