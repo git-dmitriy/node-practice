@@ -6,4 +6,21 @@
 
   <body>
     <%- include('../includes/navigation.ejs') %>
+
+    <main>
+
+      <% if (products.length > 0) {%>
+
+        <ul>
+          <% products.forEach(product => { %>
+            <li><%= product.productData.title%> ( <%= product.quantity%> )</li>
+            <%
+            
+          }); %>
+
+        </ul>
+      <%} else { %>
+        <h1>There are no products in cart.</h1>
+        <%} %>
+    </main>
     <%- include('../includes/footer.ejs') %>
