@@ -12,8 +12,12 @@ exports.getAddProduct = (req, res, next) => {
 exports.postAddProduct = (req, res, next) => {
   const { title, imageUrl, price, description } = req.body;
   const product = new Product(null, title, imageUrl, price, description);
-  product.save();
-  res.redirect('/');
+  product
+    .save()
+    .then(() => {
+      res.redirect('/');
+    })
+    .catch((err) => console.log(err));
 };
 
 exports.getEditProduct = (req, res, next) => {
@@ -50,11 +54,13 @@ exports.postEditProduct = (req, res, next) => {
 };
 
 exports.getProducts = (req, res, next) => {
-  Product.fetchAll((products) => {
-    res.render('admin/products', {
-      pageTitle: 'Admin Products',
-      prods: products,
-      path: '/admin/products',
-    });
-  });
+  Product.fetchAll()
+    .then(([products]) => {
+      res.render('admin/products', {
+        pageTitle: 'Admin Products',
+        prods: products,
+        path: '/admin/products',
+      });
+    })
+    .catch((err) => console.log(err));
 };
